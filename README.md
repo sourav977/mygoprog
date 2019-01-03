@@ -1,0 +1,2 @@
+# mygoprog
+Golang concepts 
