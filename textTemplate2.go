@@ -21,13 +21,11 @@ type Job struct {
 const templ = `The name is {{.Name}}.
 The age is {{.Age}}.
 {{range .Emails}}
-        An email is {{.}}
+An email is {{.}}
 {{end}}
-
 {{with .Jobs}}
     {{range .}}
-        An employer is {{.Employer}}
-        and the role is {{.Role}}
+An employer is {{.Employer}} and the role is {{.Role}}
     {{end}}
 {{end}}
 `

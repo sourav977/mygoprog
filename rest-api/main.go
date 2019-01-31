@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 
@@ -38,15 +39,17 @@ func GetPerson(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	json.NewEncoder(w).Encode(&Person{})
+	json.NewEncoder(w).Encode(&Person{ID: params["id"], Firstname: "", Lastname: "", Address: &Address{City: "", State: ""}})
 }
 
 // CreatePerson create a new item
 func CreatePerson(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
+	fmt.Println(params)
 	var person Person
 	_ = json.NewDecoder(r.Body).Decode(&person)
 	person.ID = params["id"]
+	fmt.Println(r.Body)
 	people = append(people, person)
 	json.NewEncoder(w).Encode(people)
 }
@@ -59,8 +62,9 @@ func DeletePerson(w http.ResponseWriter, r *http.Request) {
 			people = append(people[:index], people[index+1:]...)
 			break
 		}
-		json.NewEncoder(w).Encode(people)
+		//json.NewEncoder(w).Encode(people)
 	}
+	json.NewEncoder(w).Encode(people)
 }
 
 // main function to boot up everything

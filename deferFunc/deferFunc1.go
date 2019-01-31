@@ -4,7 +4,7 @@ import "fmt"
 
 func func1() int {
 	defer fmt.Println("hello")
-	//fmt.Println(z)
+	fmt.Println("inside func1")
 	return 10
 }
 

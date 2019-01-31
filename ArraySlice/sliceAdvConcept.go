@@ -11,7 +11,7 @@ func main() {
 	fmt.Println("slice after call:", sl1)
 	//modify2(&sl1)
 	apnd(&sl1)
-	fmt.Println(sl1)
+	fmt.Println("after apnd:", sl1)
 
 	ar1 := [3]int{101, 201, 301}
 	ar2 := [3]int{101, 201}
@@ -23,16 +23,16 @@ func main() {
 	fmt.Println("array before call:", ar1)
 	modify2(ar1)
 	fmt.Println("array after call:", ar1)
-	sl2 := []int{10, 20, 30}
-	if sl1[1] == sl2[1] {
+	sl2 := []int{8, 20, 30}
+	if sl1[0] == sl2[0] {
 		fmt.Println("ok slice")
 	} else {
 		fmt.Println("not ok slice")
 	}
 	if ar1 == ar2 {
-		fmt.Println("ok")
+		fmt.Println("ok ary")
 	} else {
-		fmt.Println("not ok")
+		fmt.Println("not ok ary")
 	}
 
 	p1 := struct {
@@ -44,9 +44,9 @@ func main() {
 		b int
 	}{a: "righ", b: 11}
 	if p1 == p2 {
-		fmt.Println("Same position")
+		fmt.Println("Same struct")
 	} else {
-		fmt.Println("not p")
+		fmt.Println("not same struct")
 	}
 
 	pair := [2]int{4, 2}

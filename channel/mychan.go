@@ -13,14 +13,15 @@ func main() {
 	fmt.Printf("%T\n", h)
 	done := make(chan bool)
 	go hello(done)
-	time.Sleep(3)
+
 	data := <-done
+	time.Sleep(3)
 	fmt.Println("ok main", data)
 }
 
 func hello(done chan bool) {
 	fmt.Println("before write")
 	done <- true
-	time.Sleep(1)
+	//time.Sleep(1)
 	fmt.Println("after")
 }

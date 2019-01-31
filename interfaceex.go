@@ -8,10 +8,18 @@ type Shaper interface {
 type Square struct {
 	side float32
 }
+type Rectangle struct {
+	length, breadth float32
+}
 
 func (sq *Square) Area() float32 {
 	return sq.side * sq.side
 }
+
+func (rec *Rectangle) Area() float32 {
+	return rec.length * rec.breadth
+}
+
 func main() {
 	sq1 := new(Square)
 	fmt.Println(sq1)
@@ -25,4 +33,12 @@ func main() {
 	// or even:
 	areaIntf := sq1
 	fmt.Printf("The square has area: %f\n", areaIntf.Area())
+	rec1 := new(Rectangle)
+	rec1.length = 23.50
+	rec1.breadth = 12.89
+	s := []Shaper{rec1, sq1}
+	for _, v := range s {
+		result := v.Area()
+		fmt.Println(result)
+	}
 }
