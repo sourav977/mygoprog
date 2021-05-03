@@ -10,7 +10,7 @@ func main() {
 	sl1 = []int{1, 2}
 	fmt.Println("len:", len(sl1), "cap:", cap(sl1))
 	fmt.Println(sl1)
-	func1(&sl1)
+	func1(sl1)
 	fmt.Println("in main func, after func1 call, sl1:", sl1)
 
 	sl2 := make([]int, 2, 4)
@@ -24,8 +24,8 @@ func main() {
 
 }
 
-func func1(a *[]int) {
-	*a = append(*a, 3, 4, 5)
+func func1(a []int) {
+	a = append(a, 3, 4, 5)
 	fmt.Println("in func1, after append, sl1:", a)
 }
 
