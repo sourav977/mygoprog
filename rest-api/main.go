@@ -55,7 +55,7 @@ func CreatePerson(w http.ResponseWriter, r *http.Request) {
 }
 
 // DeletePerson Delete an item
-func DeletePerson(w http.ResponseWriter, r *http.Request) {
+func DeletePerson(r *http.Request, w http.ResponseWriter) {
 	params := mux.Vars(r)
 	for index, item := range people {
 		if item.ID == params["id"] {
@@ -77,4 +77,5 @@ func main() {
 	router.HandleFunc("/people/{id}", CreatePerson).Methods("POST")
 	router.HandleFunc("/people/{id}", DeletePerson).Methods("DELETE")
 	log.Fatal(http.ListenAndServe(":8000", router))
+	http.NewServeMux()
 }
