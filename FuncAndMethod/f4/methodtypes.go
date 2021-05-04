@@ -9,7 +9,7 @@ import (
 func init() {
 	fmt.Println("hello from init")
 	go func1() //Goroutines may be run during program initialization
-	time.Sleep(1)
+	time.Sleep(time.Second)
 }
 
 func func1() {
@@ -20,7 +20,14 @@ type intary [2]int        // creating alias
 type intslc []int         // creating alias
 type mymap map[string]int // creating alias
 
-func (i intary) addition() { // receiver type is an array
+//type inter interface{}
+
+//invalid receiver inter (pointer or interface type)compiler InvalidRecv
+// func (i inter) addition(){
+
+// }
+
+func (i *intary) addition() { // receiver type is an array
 	res := 0
 	for x := 0; x < len(i); x++ {
 		res += i[x]
@@ -46,18 +53,14 @@ func (m mymap) addition() { // receiver type is a map
 
 func main() {
 	fmt.Println("hello from main")
-	var inary intary
-	inary[0] = 10
-	inary[1] = 20
+	var inary = intary{10, 20}
 	inary.addition()
 
 	var inslc intslc
 	inslc = append(inslc, 100, 200, 300, 400, 500)
 	inslc.addition()
 
-	var mp mymap
-	fmt.Printf("%t, %V\n", mp, mp)
-	mp = make(mymap, 3)
+	var mp mymap = make(mymap, 3)
 	fmt.Printf("%T, %v\n", mp, mp)
 	mp["a"] = 300
 	mp["b"] = 400
