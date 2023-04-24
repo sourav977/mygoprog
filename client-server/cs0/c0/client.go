@@ -17,9 +17,10 @@ import (
 )
 
 func main() {
-	//conn, _ := net.Dial("tcp", "127.0.0.1:8081")  //uncomment to see diff behaviour
+	fmt.Println("Launching client...")
+	conn, _ := net.Dial("tcp", "127.0.0.1:8081") //uncomment to see diff behaviour
 	for {
-		conn, _ := net.Dial("tcp", "127.0.0.1:8081") //comment to see diff behaviour
+		//conn, _ := net.Dial("tcp", "127.0.0.1:8081") //comment to see diff behaviour
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Print("Text to send: ")
 		text, _ := reader.ReadString('\n')
